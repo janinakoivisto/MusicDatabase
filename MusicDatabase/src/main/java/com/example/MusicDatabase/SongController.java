@@ -38,7 +38,7 @@ public class SongController {
 	public String addSong(Model model) {
 		model.addAttribute("song", new Song());
 		model.addAttribute("genres", gRepository.findAll());
-		return "addSong";
+		return "addsong";
 	}
 	
 	@PostMapping(value = "/save")

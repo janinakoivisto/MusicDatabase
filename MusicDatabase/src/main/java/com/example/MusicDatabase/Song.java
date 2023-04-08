@@ -1,5 +1,7 @@
 package com.example.MusicDatabase;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +20,7 @@ public class Song {
 	private int releaseYear;
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name= "genreId")
 	private Genre genre;
 	

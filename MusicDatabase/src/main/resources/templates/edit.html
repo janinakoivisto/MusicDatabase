@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit song</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Edit song</h1>
+	<div>
+		<form th:object="${songedit}" th:action="@{/save}" action="#" method="post">
+			<input type="hidden" id="id" th:field="*{id}" class="form-control" />
+			
+			<label for="id"></label>
+			<input type="hidden" id="id" th:field="*{id}" readonly="readonly" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		  	<label for="songTitle">Song Title</label>
+			<input type="text" th:field="*{songTitle}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  
+		  	<label for="artistName">Artist</label>
+			<input type="text" th:field="*{artistName}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="releaseYear">Year</label>
+			<input type="text" th:field="*{releaseYear}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		 
+		  
+			
+			
+			
+			<input type="submit" value="Save" class="btn btn-success"></input>
+		</form>
+	</div>
+</body>
+</html>
