@@ -25,10 +25,11 @@
 			<label for="releaseYear">Year</label>
 			<input type="text" th:field="*{releaseYear}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-		 
-		  
 			
-			
+			 <label for="genres">Genre</label>
+			<select id="genres" th:field="*{genre}" class="form-control" style="width:10%;">
+    <option th:each="genre: ${genres}" th:value="${genre.id}" th:text="${genre.name}"></option>
+</select>
 			
 			<input type="submit" value="Save" class="btn btn-success"></input>
 		</form>

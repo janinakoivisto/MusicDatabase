@@ -7,10 +7,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.example.MusicDatabase.*;
-/**
- * This class is used by spring security to authenticate and authorize user
- **/
+//  authenticate and authorize user
+
 @Service
 public class UserDetailServiceImpl implements UserDetailsService  {
 	private final AppUserRepository repository;
@@ -27,4 +25,4 @@ public class UserDetailServiceImpl implements UserDetailsService  {
         		AuthorityUtils.createAuthorityList(curruser.getRole()));
         return user;
     }   
-} 
+}

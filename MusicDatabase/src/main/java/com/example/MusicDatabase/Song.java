@@ -35,24 +35,34 @@ public class Song {
 		this.releaseYear = releaseYear;
 	}
 	
-	
-	
 	public Song(String songTitle, String artistName, int releaseYear, Genre genre) {
 		super();
+		this.songTitle = songTitle;
+		this.artistName = artistName;
+		this.releaseYear = releaseYear;
+		this.genre = genre;
 	}
 	
 	public Song(Long id, String songTitle, String artistName, int releaseYear, Genre genre) {
+		super();
+		this.id = id;
+		this.songTitle = songTitle;
+		this.artistName = artistName;
+		this.releaseYear = releaseYear;
+		this.genre = genre;
+	}
+	
+	public Song() {
 		super();
 	}
 	
 // getters and setters
 	
 
-	public Song() {
-		// TODO Auto-generated constructor stub
-	}
 
 
+
+	
 
 	public Long getId() {
 		return id;

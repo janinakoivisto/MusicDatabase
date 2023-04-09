@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Songlist</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -10,30 +10,40 @@
 	<div class="col-md-4">
 		<h1>Songs</h1>
 	</div>
-	<div class="col-md-4">
-		Welcome <b sec:authentication="name"></b>, 
-        your role is <b sec:authentication="principal.authorities"></b>
 	</div>
-	<div class="col-md-4" style="padding:20px 0">
-		<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
-		</form>
+		
 	</div>
     <table class="table table-striped">
 		<tr>
 		    <th>Song name</th>
 		    <th>Artist</th>
-		    <th>Release year</th>
+		    <th>Year</th>
 		    <th>Genre</th>
 		</tr>  
     	<tr th:each = "song : ${songs}">
     		<td th:text="${song.songTitle}"></td>
     		<td th:text="${song.artistName}"></td>
-    		<td th:text="${song.genre.name}"></td> 		
- 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${song.id})}" class="btn btn-xs btn-danger">Delete</a></td>    		
+    		<td th:text="${song.releaseYear}"></td>
+    		<td th:text="${song.genre != null ? song.genre.name : ''}"></td> 		
+ 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${song.id})}" class="btn btn-xs btn-danger">Delete</a></td>   
+ 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${song.id})}" class="btn btn-xs btn-danger">Edit</a></td>    		
+ 			 		
     	</tr>
      </table>
 	 <a href="/addsong" class="btn btn-primary">Add Song</a> 
-</div>	    	
+	<a href="/genrelist" class="btn btn-primary">Show Genres</a> 
+	
+	<div class="col-md-4" style="padding:20px 0">
+	<div class="btn-group">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Logout" data-target="#myModal" />
+		</form>
+		<form th:action="@{/signup}" method="post">
+			<input type="submit" value="Sign Up" class="btn btn-sm btn-danger" />
+		</form>
+	</div>
+</div>
+
+    	
 </body>
 </html>

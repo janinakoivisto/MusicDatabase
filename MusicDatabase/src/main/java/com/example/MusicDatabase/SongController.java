@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@EnableMethodSecurity(securedEnabled = true)
 public class SongController {
 
 	@Autowired
@@ -47,7 +49,6 @@ public class SongController {
 		return "redirect:songlist";
 	}
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	@PreAuthorize("hasRole('ADMIN')")
 	public String deleteSong(@PathVariable("id") Long id, Model model) {
 		sRepository.deleteById(id);
 		return "redirect:../songlist";
@@ -55,7 +56,10 @@ public class SongController {
 	
 	@RequestMapping(value = "/edit/{id}")
 	public String editSong(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("songedit", sRepository.findById(id));
+		Optional<Song> song = sRepository.findById(id);
+		Iterable<Genre> genres = gRepository.findAll();
+		model.addAttribute("songedit", song.get());
+		model.addAttribute("genres", genres);
 		return "edit";
 	}
 	
