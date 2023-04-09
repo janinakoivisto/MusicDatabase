@@ -12,7 +12,7 @@
 	</div>
 	</div>
 		
-	</div>
+	
     <table class="table table-striped">
 		<tr>
 		    <th>Song name</th>
@@ -26,7 +26,8 @@
     		<td th:text="${song.releaseYear}"></td>
     		<td th:text="${song.genre != null ? song.genre.name : ''}"></td> 		
  			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${song.id})}" class="btn btn-xs btn-danger">Delete</a></td>   
- 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${song.id})}" class="btn btn-xs btn-danger">Edit</a></td>    		
+			<td sec:authorize="hasAnyAuthority('USER', 'ADMIN')"><a th:href="@{/edit/{id}(id=${song.id})}" class="btn btn-xs btn-danger">Edit</a>
+</td>
  			 		
     	</tr>
      </table>
@@ -37,9 +38,6 @@
 	<div class="btn-group">
 		<form th:action="@{/logout}" method="post">
 			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Logout" data-target="#myModal" />
-		</form>
-		<form th:action="@{/signup}" method="post">
-			<input type="submit" value="Sign Up" class="btn btn-sm btn-danger" />
 		</form>
 	</div>
 </div>

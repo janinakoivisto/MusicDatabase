@@ -20,11 +20,12 @@ public class WebSecurityConfig  {
 	public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 		
 		http.authorizeHttpRequests().requestMatchers("/css/**", "/signup").permitAll()
-		.requestMatchers("/delete/**", "/addsong", "/genrelist/add", "/edit/**").hasAuthority("ADMIN") // vain adminilla mahdollisuus poistaa, lisätä ja muokata kappaleita
+		.requestMatchers("/delete/**", "/addsong").hasAuthority("ADMIN") // vain adminilla mahdollisuus poistaa kappaleita
+		.requestMatchers("/edit/**", "/addsong").hasAnyAuthority("USER", "ADMIN")
 		.and()
 		.authorizeHttpRequests().anyRequest().authenticated()
 		.and()
-		.headers().frameOptions().disable() //for h2 console			
+		.headers().frameOptions().disable() 		
 		.and()
 		.formLogin()
 		.loginPage("/login")

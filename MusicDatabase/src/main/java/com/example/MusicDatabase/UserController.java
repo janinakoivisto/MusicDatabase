@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jakarta.validation.*;
 
-import com.example.MusicDatabase.SignupForm;
-import com.example.MusicDatabase.AppUser;
-import com.example.MusicDatabase.AppUserRepository;
+
 
 
 

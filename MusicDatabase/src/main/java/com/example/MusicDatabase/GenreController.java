@@ -53,8 +53,10 @@ public class GenreController {
 	}
 
 	@GetMapping("/genres/{id}")
-	public @ResponseBody Optional<Genre> findGenreById(@PathVariable("id") Long categoryId) {
-		return grepository.findById(categoryId);
+	public @ResponseBody Optional<Genre> findGenreById(@PathVariable("id") Long genreId) {
+		return grepository.findById(genreId);
 	}
+	
+
 	
 }
