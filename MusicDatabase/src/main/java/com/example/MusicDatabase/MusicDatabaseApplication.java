@@ -21,8 +21,10 @@ public class MusicDatabaseApplication {
         return (args) -> {
             grepository.save(new Genre("Rock"));
             grepository.save(new Genre("Pop"));
+            grepository.save(new Genre("Electronic"));
 
-            srepository.save(new Song("Song Name", "Artist", 2020, grepository.findByName("Rock").get(0)));
+
+            srepository.save(new Song("Ache", "FKA twigs", 2012, grepository.findByName("Electronic").get(0)));
 
             // Create users: admin/admin user/user
             AppUser user1 = new AppUser("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");

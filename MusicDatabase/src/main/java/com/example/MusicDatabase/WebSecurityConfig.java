@@ -20,7 +20,7 @@ public class WebSecurityConfig  {
 	public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 		
 		http.authorizeHttpRequests().requestMatchers("/css/**", "/signup").permitAll()
-		.requestMatchers("/delete/**", "/addsong", "/genrelist/add", "/edit/**").hasAuthority("ADMIN")
+		.requestMatchers("/delete/**", "/addsong", "/genrelist/add", "/edit/**").hasAuthority("ADMIN") // vain adminilla mahdollisuus poistaa, lisätä ja muokata kappaleita
 		.and()
 		.authorizeHttpRequests().anyRequest().authenticated()
 		.and()

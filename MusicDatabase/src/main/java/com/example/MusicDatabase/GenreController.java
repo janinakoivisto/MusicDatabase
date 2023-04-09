@@ -22,17 +22,24 @@ public class GenreController {
 	@Autowired
 	private GenreRepository grepository;
 	
+	
+	//listaa genret
+	
 	@GetMapping("/genrelist")
 	public String getGenres(Model model) {
 		model.addAttribute("genres", grepository.findAll());
 		return "genrelist";
 	}
 	
+	//lisää genren
+	
 	@RequestMapping("/genrelist/add")
 	public String addGenre(Model model) {
 		model.addAttribute("genre", new Genre());
 		return "addgenre";
 	}
+	
+	//tallentaa genren listaan
 	
 	@PostMapping("/genrelist/save")
 	public String save(Genre genre) {
