@@ -19,9 +19,10 @@ public class WebSecurityConfig  {
 	@Bean
 	public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 		
-		http.authorizeHttpRequests().requestMatchers("/css/**", "/signup").permitAll()
+		http.authorizeHttpRequests().requestMatchers("/css/**").permitAll()
 		.requestMatchers("/delete/**", "/addsong").hasAuthority("ADMIN") // vain adminilla mahdollisuus poistaa kappaleita
-		.requestMatchers("/edit/**", "/addsong").hasAnyAuthority("USER", "ADMIN")
+		.requestMatchers("/edit/**", "/addsong").hasAnyAuthority("USER", "ADMIN") // käyttäjä ja admin voivat molemmat lisätä ja muokata kappaleita
+		.requestMatchers("/signup", "/saveuser").permitAll()
 		.and()
 		.authorizeHttpRequests().anyRequest().authenticated()
 		.and()

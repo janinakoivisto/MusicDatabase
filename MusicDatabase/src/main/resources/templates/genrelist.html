@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <title>Song list</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -14,6 +14,9 @@
 
 		<tr th:each="genre : ${genres}">
 			<td th:text="${genre.name}">Name</td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/genrelist/delete/{genreId}(genreId=${genre.genreId})}" class="btn btn-xs btn-danger">Delete</a></td>
+			<td sec:authorize="hasAnyAuthority('USER', 'ADMIN')"><a th:href="@{/genrelist/edit/{genreId}(genreId=${genre.genreId})}" class="btn btn-xs btn-danger">Edit</a>
+			
 		</tr>
 	</table>
 	

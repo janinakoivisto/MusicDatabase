@@ -25,17 +25,23 @@ public class Genre {
 		super();
 		this.name = name;
 	}
+	
+	public Genre(String name, Long genreId) {
+		super();
+		this.name = name;
+		this.genreId = genreId;
+	}
 
 	
 	public Genre() {
 		super();
 	}
 	
-	public Long getId() {
+	public Long getGenreId() {
 		return genreId;
 	}
 
-	public void setId(Long genreId) {
+	public void setGenreId(Long genreId) {
 		this.genreId = genreId;
 	}
 
@@ -51,8 +57,8 @@ public class Genre {
 		return songs;
 	}
 
-	public void setStudents(List<Song> songs) {
-		this.songs = songs;
+	public void setSongs(List<Song> songs) {
+	    this.songs = songs;
 	}
 
 	@Override

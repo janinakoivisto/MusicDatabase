@@ -28,6 +28,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 			public void createNewGenre() {
 			Genre genre = new Genre("Metal");
 			repository.save(genre);
-			assertThat(genre.getId()).isNotNull();
+			assertThat(genre.getGenreId()).isNotNull();
 		}
 	}

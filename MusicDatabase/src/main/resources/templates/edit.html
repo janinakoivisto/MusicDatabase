@@ -28,7 +28,7 @@
 			
 			 <label for="genres">Genre</label>
 			<select id="genres" th:field="*{genre}" class="form-control" style="width:10%;">
-    <option th:each="genre: ${genres}" th:value="${genre.id}" th:text="${genre.name}"></option>
+    <option th:each="genre: ${genres}" th:value="${genre.genreId}" th:text="${genre.name}"></option>
 </select>
 			
 			<input type="submit" value="Save" class="btn btn-success"></input>

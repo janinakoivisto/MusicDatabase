@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import jakarta.transaction.Transactional;
 
 
 
@@ -52,11 +55,25 @@ public class GenreController {
 		return (List<Genre>) grepository.findAll();
 	}
 
-	@GetMapping("/genres/{id}")
-	public @ResponseBody Optional<Genre> findGenreById(@PathVariable("id") Long genreId) {
+	@GetMapping("/genres/{genreId}")
+	public @ResponseBody Optional<Genre> findGenreById(@PathVariable("genreId") Long genreId) {
 		return grepository.findById(genreId);
 	}
 	
-
+	@Transactional
+	@RequestMapping(value = "/genrelist/delete/{genreId}", method = RequestMethod.GET)
+	public String deleteGenre(@PathVariable("genreId") Long genreId, Model model) {
+		grepository.deleteByGenreId(genreId);
+		return "redirect:/genrelist";
+	}
+	
+	@RequestMapping(value = "/genrelist/edit/{genreId}")
+	public String editGenre(@PathVariable("genreId") Long genreId, Model model) {
+		Optional<Genre> genre = grepository.findById(genreId);
+		model.addAttribute("editgenre", genre.get());
+		return "editgenre";
+	}
+	
+	
 	
 }

@@ -22,7 +22,7 @@ public class UserController {
     private AppUserRepository repository; 
 	
     @RequestMapping(value = "signup")
-    public String addStudent(Model model){
+    public String addAppUser(Model model){
     	model.addAttribute("signupform", new SignupForm());
         return "signup";
     }	
