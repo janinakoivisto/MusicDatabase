@@ -24,13 +24,15 @@ public class MusicDatabaseApplication {
             grepository.save(new Genre("Electronic"));
             grepository.save(new Genre("Darkwave"));
             grepository.save(new Genre("Experimental"));
+            grepository.save(new Genre("Alternative"));
+
 
 
 
             srepository.save(new Song("Ache", "FKA twigs", 2012, grepository.findByName("Electronic").get(0)));
             srepository.save(new Song("A Forest", "The Cure", 1980, grepository.findByName("Rock").get(0)));
             srepository.save(new Song("Shake Well Before Use", "YSI", 2020, grepository.findByName("Experimental").get(0)));
-            srepository.save(new Song("Ache", "FKA twigs", 2012, grepository.findByName("Electronic").get(0)));
+            srepository.save(new Song("We Appreciate Power", "Grimes", 2018, grepository.findByName("Alternative").get(0)));
 
 
             // Create users: admin/admin user/user

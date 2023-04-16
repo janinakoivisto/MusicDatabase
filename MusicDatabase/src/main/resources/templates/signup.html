@@ -22,7 +22,9 @@
 				<label> Re-type Password: <input type="password" th:field="*{passwordCheck}" class="form-control"/></label>
 				<p th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Password Match Error</p>	
 			</div>
-			
+			<div style="max-width:600px">
+			<p>When making an account, use 'fake' credentials for your own safety. When signing up, your role will be set to a regular user automatically and you will have some restrictions.</p>
+			</div>
 			<input type="submit" class="btn btn-primary" value="Signup"></input>		
 		</form>
 	</div>
